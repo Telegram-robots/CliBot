@@ -170,6 +170,23 @@ function is_sudo(msg)
       var = true
     end
   end
+  for v,user in pairs(_config.vip_users) do
+    if user == msg.from.id then
+      var = true
+    end
+  end
+  return var
+end
+
+--
+function is_vip_users(msg)
+  local var = false
+  -- Check users id in config
+  for v,user in pairs(_config.vip_users) do
+    if user == msg.from.id then
+      var = true
+    end
+  end
   return var
 end
 
@@ -724,6 +741,12 @@ function is_owner(msg)
         var = true
     end
   end
+  
+    for v,user in pairs(_config.vip_users) do
+    if user == msg.from.id then
+        var = true
+    end
+  end
   return var
 end
 
@@ -756,6 +779,12 @@ function is_owner2(user_id, group_id)
         var = true
     end
   end
+  
+  for v,user in pairs(_config.vip_users) do
+    if user == user_id then
+        var = true
+    end
+  end
   return var
 end
 
@@ -775,6 +804,12 @@ function is_admin1(msg)
         var = true
     end
   end
+  
+  for v,user in pairs(_config.vip_users) do
+    if user == msg.from.id then
+        var = true
+    end
+  end
   return var
 end
 
@@ -789,6 +824,12 @@ function is_admin2(user_id)
     end
   end
   for v,user in pairs(_config.sudo_users) do
+    if user == user_id then
+        var = true
+    end
+  end
+  
+  for v,user in pairs(_config.vip_users) do
     if user == user_id then
         var = true
     end
@@ -834,6 +875,12 @@ function is_momod(msg)
         var = true
     end
   end
+  
+  for v,user in pairs(_config.vip_users) do
+    if user == msg.from.id then
+        var = true
+    end
+  end
   return var
 end
 
@@ -870,6 +917,12 @@ function is_momod2(user_id, group_id)
   end
 
   for v,user in pairs(_config.sudo_users) do
+    if user == usert then
+        var = true
+    end
+  end
+  
+  for v,user in pairs(_config.vip_users) do
     if user == usert then
         var = true
     end
